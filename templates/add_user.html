@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Add User Form</title>
+
+</head>
+<body>
+    <h1>Add a new User</h1>
+    <form action="/users/new" method="POST">
+      <input type="text" name="first_name"  id= "first_name" placeholder="Enter a first name">
+      <input type="text" name="last_name"  id="last_name" placeholder="Enter a last name">
+      <input type="text" name="image_url"  id= "image_url" placeholder="Provide an image url of this user">
+      <button type="submit"> Add User </button>
+    </form>
+</body>
+</html>
