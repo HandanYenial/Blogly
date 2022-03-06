@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Post</title>
+</head>
+
+<body>
+   
+    <h1> Edit Post</h1>
+    <form method="POST"  action="/posts/{{post.id}}/edit">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" value="{{post.title}}">
+
+        <label for="content">Content </label>
+        <input type="text" id="content" name="content" value="{{post.content}}">
+        
+
+        <label for="created_at">Date/Time</label>
+        <input type="text" id="created_at" name="created_at" value="{{post.created_at}}">
+   
+        <div>
+            <a href="/users/{{ post.user_id }}"><button>Cancel</button></a>
+
+            <button type="submit" class="btn btn-success">
+                Edit
+              </button>
+          </div>
+    </form>
+    
+</body>
+</html>
