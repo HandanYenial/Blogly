@@ -14,10 +14,30 @@
       Title: <input type="text" id="title" name="title" placeholder="Enter post title">
       Post:  <input type="text" id="content" name="content" placeholder="What do you want to share today?">
       Date/Time: <input type="text" id="created_at" name="created_at" placeholder="Date/Time">
+    
+
+    <div>
+      {% for tag in tags %}
+      <div>
+        <input 
+               type="checkbox"
+               value="{{ tag.id }}"
+               id="tag_{{ tag.id }}"
+               name="tags">
+        <label for="tag_{{ tag.id }}">
+          {{ tag.name }}
+        </label>
+      </div>
+      {% endfor %}
+      <a href="/tags" class="btn btn-outline-primary">Add Tag</a>
+    </div>
+
     <button type="Submit">Add Post</button>
     <button a href="/users/{{user.id}}">Cancel</button>
+
     </form>
-  
+
+ 
     
 </body>
 </html> 
