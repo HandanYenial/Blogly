@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Post</title>
-</head>
+{% extends 'base.html' %}
 
-<body>
+{% block content %}
    
     <h1> Edit Post</h1>
     <form method="POST"  action="/posts/{{post.id}}/edit">
@@ -27,8 +20,24 @@
             <button type="submit" class="btn btn-success">
                 Edit
               </button>
-          </div>
+        </div>
+
+        <div class="form-check">
+            {% for tag in tags %}
+            <div>
+              <input class="form-check-input"
+                     type="checkbox"
+                     value="{{ tag.id }}"
+                     id="tag_{{ tag.id }}"
+                     {% if tag in post.tags %}checked{% endif %}
+                     name="tags">
+              <label class="form-check-label" for="tag_{{ tag.id }}">
+                {{ tag.name }}
+              </label>
+            </div>
+            {% endfor %}
+        </div>
     </form>
-    
-</body>
-</html>
+
+
+    {% endblock %}
