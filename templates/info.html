@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block content %}
+  
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{user.first_name}} {{user.last_name}}</title>
-</head>
 
 <body>
   <h1>{{user.first_name}} {{user.last_name}}</h1>
@@ -25,6 +20,19 @@
     </button>
   </form>
 
-</body>
+  <h2 >Posts</h2>
 
-</html>
+  <ul>
+    {% for post in user.posts %}
+    <li>
+      <a href="/posts/{{ post.id}}">{{ post.title }}</a>
+      <small>{{ post.friendly_date }}</small>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="/users/{{ user.id }}/posts/new" class="btn btn-primary">Add Post</a></p>
+
+</div>
+</div>
+{% endblock %}
