@@ -1,11 +1,6 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User List</title>
-  </head>
-  
-  <body>
+{% extends 'base.html' %}
+{% block content %}
+
     <h1> Users </h1>
     <ul>     
       {% for user in users %}
@@ -16,6 +11,5 @@
     </ul>
     <p> To add a new user you can go back to the User Form </p>
     <a href="/users/new"> Add User </a>
-  </body>
-  
-  </html>
+
+    {% endblock %}
