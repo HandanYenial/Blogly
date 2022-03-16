@@ -99,17 +99,19 @@ def delete_user(user_id):
 def show_form(user_id):
     """Show form to add a post for that user"""
     user = User.query.get_or_404(user_id)
-    return render_template("add_post.html", user=user)
+    tags = Tag.query.all()
+    return render_template("add_post.html", user=user, tags=tags)
 
 @app.route('/users/<int:user_id>/posts/new' , methods = ["POST"])
 def handle_form(user_id):
     """Handle add form,add post and redirect user to the info page"""
     user = User.query.get_or_404(user_id)
     tag_ids = [int(num) for num in request.form.getlist("tags")] #####?
-    tags = Tag.query.filter(Tag.id.in_(tag_ids)).all()
+    tags = Tag.query.filter(Tag.id.in_(tag_ids)).all() #checking with the database if these tags are in there
     new_post = Post(title=request.form['title'],
                     content=request.form['content'],
-                    user=user)
+                    user=user,
+                    tags=tags)
     
     #new_post.title = request.form["title"]
     #new_post.content = request.form["content"]
@@ -132,7 +134,7 @@ def show_edit_form(post_id):
     """Show a form to edit a post"""
     post = Post.query.get_or_404(post_id)
     tags = Tag.query.all()
-    return render_template('edit_post.html', post=post)
+    return render_template('edit_post.html', post=post , tags=tags)
 
 @app.route('/posts/<int:post_id>/edit' , methods = ["POST"])
 def edit_form(post_id):
